@@ -1,0 +1,50 @@
+<section id="diagnostic" class="diagnostic-section">
+  <div class="container">
+    <app-section-title title="С чего начинается ваш запрос?" subtitle="Диагностика и саморефлексия"
+      align="center"></app-section-title>
+
+    <div class="diagnostic-intro">
+      <p>
+        Прислушайтесь к себе. Какой из этих внутренних вопросов откликается в теле прямо сейчас? Выберите карточку,
+        чтобы получить первичное полевое объяснение и рекомендацию по направлению работы.
+      </p>
+    </div>
+
+    <div class="diagnostic-grid">
+      <div *ngFor="let card of diagnosticCards" class="diagnostic-card-wrapper"
+        [class.selected]="selectedCardId() === card.id" (click)="selectCard(card.id)">
+        <app-card [glowing]="selectedCardId() === card.id" [interactive]="true">
+          <div class="card-inner">
+            <p class="question-text">{{ card.question }}</p>
+            <div class="select-indicator">
+              <span class="dot"></span>
+            </div>
+          </div>
+        </app-card>
+      </div>
+    </div>
+
+    <!-- Active Guidance Recommendation Block -->
+    <div class="recommendation-panel glass-panel" *ngIf="selectedCardId() !== null">
+      <div class="recommendation-content fade-in">
+        <div class="recommendation-header">
+          <span class="recommendation-badge">Вектор работы</span>
+          <h4 class="recommendation-title">Полевое видение вашего запроса:</h4>
+        </div>
+
+        <p class="feedback-text">{{ getSelectedCard()?.feedback }}</p>
+
+        <div class="direction-box">
+          <span class="direction-label">Рекомендуемое направление:</span>
+          <p class="direction-text">{{ getSelectedCard()?.recommendation }}</p>
+        </div>
+
+        <div class="recommendation-action">
+          <app-button variant="primary" (click)="scrollToSection('contact')">
+            Обсудить запрос на сессии
+          </app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

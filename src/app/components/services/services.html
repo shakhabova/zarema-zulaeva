@@ -1,0 +1,62 @@
+<section id="services" class="services-section">
+  <div class="container">
+    <app-section-title
+      title="Направления работы"
+      subtitle="Услуги и форматы сессий"
+      align="center"
+    ></app-section-title>
+
+    <!-- Redesigned Horizontal Editorial List of Services -->
+    <div class="services-list">
+      <div 
+        #rowEl
+        *ngFor="let service of services; let idx = index" 
+        [class]="'service-row-item ' + (service.highlight ? 'highlighted-row' : '')"
+        (mousemove)="onRowMouseMove($event, rowEl)"
+        (click)="scrollToSection('contact')"
+      >
+        <!-- Top divider line -->
+        <div class="row-divider"></div>
+
+        <div class="row-container">
+          <!-- Column 1: Index and titles -->
+          <div class="col-header">
+            <span class="service-idx">0{{ idx + 1 }}</span>
+            <div class="title-wrap">
+              <span class="service-subtitle">{{ service.subtitle }}</span>
+              <h3 class="service-title">{{ service.title }}</h3>
+            </div>
+          </div>
+
+          <!-- Column 2: Description -->
+          <div class="col-desc">
+            <p>{{ service.description }}</p>
+          </div>
+
+          <!-- Column 3: Duration and Format -->
+          <div class="col-meta">
+            <div class="meta-item">
+              <span class="meta-label">Длительность</span>
+              <span class="meta-value">{{ service.duration }}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Формат</span>
+              <span class="meta-value">{{ service.format }}</span>
+            </div>
+          </div>
+
+          <!-- Column 4: CTA Button -->
+          <div class="col-action">
+            <div class="arrow-btn">
+              <span class="arrow-text">Записаться</span>
+              <span class="arrow-icon">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom final line of the list -->
+      <div class="row-divider"></div>
+    </div>
+  </div>
+</section>

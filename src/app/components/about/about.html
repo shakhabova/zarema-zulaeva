@@ -1,0 +1,48 @@
+<section id="about" class="about-section">
+  <div class="container">
+    <app-section-title title="О специалисте" subtitle="Профессиональный путь" align="left"></app-section-title>
+
+    <div class="about-grid">
+      <!-- Left Column: Asymmetric Editorial Photo Frame -->
+      <div class="about-image-column">
+        <div class="image-frame">
+          <img src="/images/psychologist-about.png" alt="Зарема Зулаева — О психологе" class="about-img">
+        </div>
+        <div class="frame-border"></div>
+      </div>
+
+      <!-- Right Column: Biography & Quote -->
+      <div class="about-text-column">
+        <blockquote class="about-quote">
+          <span class="quote-mark">“</span>
+          <p class="quote-text">
+            Моя задача — не просто облегчить симптомы, а помочь вам восстановить связь с собственной сутью и обнаружить
+            скрытые ресурсы вашей семейной и квантовой системы.
+          </p>
+        </blockquote>
+
+        <div class="about-bio">
+          <p>
+            Приветствую вас. Меня зовут <strong>Зарема Зулаева</strong>. Я практикую интегративный подход к
+            психотерапии, объединяя фундаментальные клинические знания с инновационными методами квантовой психологии и
+            системных расстановок.
+          </p>
+          <p>
+            Получив базовое клиническое образование, я осознала, что человеческая психика — это не изолированный
+            механизм. Наша телесность, пищевые привычки (психодиетология), семейные динамики и даже квантовые
+            информационные поля неразрывно переплетены. Именно поэтому в своей практике я использую междисциплинарный
+            подход, который позволяет находить первопричины запросов быстрее и глубже.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wide Metrics Panel below the main grid -->
+    <div class="about-stats-panel">
+      <div *ngFor="let item of experience" class="stat-box">
+        <span class="stat-number">{{ item.year }}</span>
+        <p class="stat-text">{{ item.text }}</p>
+      </div>
+    </div>
+  </div>
+</section>

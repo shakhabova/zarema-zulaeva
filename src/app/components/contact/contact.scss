@@ -1,0 +1,301 @@
+.contact-section {
+  padding: 100px 0;
+  background-color: var(--bg-darker);
+  position: relative;
+  overflow: hidden;
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    align-items: start;
+
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+  }
+
+  /* Details Column */
+  .details-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-top: -1.5rem;
+  }
+
+  .info-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .info-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+    }
+
+    .info-text {
+      font-size: 1.05rem;
+      color: var(--text-main);
+    }
+  }
+
+  .messenger-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+  }
+
+  .messenger-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.05rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: var(--transition-fast);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    background: rgba(149, 107, 247, 0.04);
+    border: 1px solid rgba(149, 107, 247, 0.1);
+    width: fit-content;
+
+    .messenger-icon {
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    &:hover {
+      color: var(--text-main);
+      border-color: rgba(149, 107, 247, 0.35);
+      background: rgba(149, 107, 247, 0.08);
+      transform: translateX(4px);
+    }
+  }
+
+  .contact-trust-quote {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--secondary);
+    font-style: italic;
+    border-left: 2px solid var(--primary);
+    padding-left: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  /* Form Container */
+  .form-container {
+    padding: 3rem;
+    background: rgba(18, 11, 30, 0.85);
+    border-color: rgba(149, 107, 247, 0.2);
+
+    @media (max-width: 576px) {
+      padding: 2rem 1.25rem;
+    }
+
+    &.success-state {
+      border-color: var(--primary);
+      box-shadow: 0 0 30px rgba(149, 107, 247, 0.15);
+    }
+  }
+
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .input-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.02em;
+  }
+
+  .form-input {
+    background: rgba(9, 5, 16, 0.6);
+    border: 1px solid rgba(149, 107, 247, 0.25);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: var(--transition-fast);
+    outline: none;
+
+    &::placeholder {
+      color: rgba(158, 150, 179, 0.5);
+    }
+
+    &:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(149, 107, 247, 0.2);
+      background: rgba(9, 5, 16, 0.8);
+    }
+
+    &.invalid {
+      border-color: #e86b8d;
+      box-shadow: 0 0 10px rgba(232, 107, 141, 0.15);
+    }
+  }
+
+  .select-wrapper {
+    position: relative;
+
+    &::after {
+      content: '▼';
+      font-size: 0.7rem;
+      position: absolute;
+      top: 52%;
+      right: 1.25rem;
+      transform: translateY(-50%);
+      color: var(--primary);
+      pointer-events: none;
+    }
+  }
+
+  .select-input {
+    width: 100%;
+    appearance: none;
+    cursor: pointer;
+    padding-right: 2.5rem;
+
+    option {
+      background: var(--bg-dark);
+      color: var(--text-main);
+    }
+  }
+
+  .textarea-input {
+    resize: none;
+  }
+
+  .error-msg {
+    font-size: 0.75rem;
+    color: #e86b8d;
+    margin-top: 0.1rem;
+  }
+
+  .form-action {
+    margin-top: 1rem;
+    display: flex;
+
+    ::ng-deep app-button {
+      width: 100%;
+      button {
+        width: 100%;
+      }
+    }
+  }
+
+  /* Success Message Styling */
+  .success-message {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+
+    .success-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(149, 107, 247, 0.1);
+      border: 1px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(149, 107, 247, 0.2);
+
+      .success-icon {
+        font-size: 1.75rem;
+        color: var(--primary);
+        line-height: 1.1;
+      }
+    }
+
+    .success-title {
+      font-size: 1.75rem;
+      font-family: var(--font-serif);
+      color: var(--text-main);
+      font-weight: 400;
+    }
+
+    .success-text {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+
+      strong {
+        color: var(--text-main);
+      }
+    }
+
+    .success-action {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+/* Light theme overrides for form fields and links */
+[data-theme="light"] {
+  .form-container {
+    background: rgba(255, 255, 255, 0.75);
+    border-color: rgba(117, 64, 235, 0.16);
+    box-shadow: 0 15px 45px 0 rgba(117, 64, 235, 0.06);
+  }
+  
+  .form-input {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(117, 64, 235, 0.25);
+    color: var(--text-main);
+    
+    &::placeholder {
+      color: rgba(94, 87, 112, 0.5);
+    }
+    
+    &:focus {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(117, 64, 235, 0.15);
+    }
+  }
+
+  .messenger-link {
+    background: rgba(117, 64, 235, 0.04);
+    border-color: rgba(117, 64, 235, 0.12);
+    
+    &:hover {
+      background: rgba(117, 64, 235, 0.08);
+      border-color: rgba(117, 64, 235, 0.35);
+    }
+  }
+  
+  .success-icon-wrapper {
+    background: rgba(117, 64, 235, 0.08);
+  }
+}

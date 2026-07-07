@@ -1,0 +1,129 @@
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Contact details column -->
+      <div class="details-column">
+        <app-section-title
+          title="Запись на сессию"
+          subtitle="Связаться со мной"
+          align="left"
+        ></app-section-title>
+
+        <p class="contact-intro">
+          Сделайте первый шаг навстречу изменениям. Вы можете заполнить форму обратной связи или написать мне напрямую в удобный для вас мессенджер.
+        </p>
+
+        <div class="info-blocks">
+          <div class="info-block">
+            <span class="info-label">Формат встреч</span>
+            <p class="info-text">Онлайн по всему миру (Zoom, Skype, Telegram)</p>
+            <p class="info-text">Очно в Москве (кабинет в центре)</p>
+          </div>
+
+          <div class="info-block">
+            <span class="info-label">Прямая связь</span>
+            <div class="messenger-links">
+              <a href="https://t.me/zarema_field" target="_blank" rel="noopener noreferrer" class="messenger-link">
+                <span class="messenger-icon">✈</span> Telegram: @zarema_field
+              </a>
+              <a href="https://wa.me/79990000000" target="_blank" rel="noopener noreferrer" class="messenger-link">
+                <span class="messenger-icon">💬</span> WhatsApp: +7 (999) 000-00-00
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <blockquote class="contact-trust-quote">
+          «Каждая встреча — это создание безопасного пространства для исследования того, что просится наружу. Я буду вашим проводником с полным уважением к вашей скорости и вашей истории».
+        </blockquote>
+      </div>
+
+      <!-- Form column -->
+      <div class="form-column">
+        <div class="form-container glass-panel" [class.success-state]="isSubmitted()">
+          <!-- Normal Form State -->
+          <form *ngIf="!isSubmitted()" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="booking-form" novalidate>
+            <div class="form-group">
+              <label for="name" class="input-label">Ваше имя</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="form-input" 
+                placeholder="Имя" 
+                required
+                [(ngModel)]="formData.name"
+                #nameModel="ngModel"
+                [class.invalid]="nameModel.invalid && nameModel.touched"
+              >
+              <span class="error-msg" *ngIf="nameModel.invalid && nameModel.touched">Пожалуйста, укажите ваше имя</span>
+            </div>
+
+            <div class="form-group">
+              <label for="contact" class="input-label">Телефон / Telegram / WhatsApp</label>
+              <input 
+                type="text" 
+                id="contact" 
+                name="contact" 
+                class="form-input" 
+                placeholder="@username или +7..." 
+                required
+                [(ngModel)]="formData.contact"
+                #contactModel="ngModel"
+                [class.invalid]="contactModel.invalid && contactModel.touched"
+              >
+              <span class="error-msg" *ngIf="contactModel.invalid && contactModel.touched">Пожалуйста, укажите контактные данные</span>
+            </div>
+
+            <div class="form-group">
+              <label for="service" class="input-label">Направление запроса</label>
+              <div class="select-wrapper">
+                <select 
+                  id="service" 
+                  name="service" 
+                  class="form-input select-input" 
+                  required
+                  [(ngModel)]="formData.service"
+                >
+                  <option *ngFor="let s of services" [value]="s.value">{{ s.label }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="input-label">Краткое описание запроса (необязательно)</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                class="form-input textarea-input" 
+                placeholder="Что вас беспокоит..." 
+                rows="4"
+                [(ngModel)]="formData.message"
+              ></textarea>
+            </div>
+
+            <div class="form-action">
+              <app-button variant="primary" type="submit" [buttonId]="'submit-booking'">
+                Отправить запрос
+              </app-button>
+            </div>
+          </form>
+
+          <!-- Success Message -->
+          <div *ngIf="isSubmitted()" class="success-message fade-in">
+            <div class="success-icon-wrapper">
+              <span class="success-icon">✦</span>
+            </div>
+            <h4 class="success-title">Запрос отправлен в поле</h4>
+            <p class="success-text">
+              Спасибо за доверие, <strong>{{ formData.name }}</strong>. Ваша заявка успешно принята. Я свяжусь с вами в ближайшее время для согласования даты и времени первой встречи.
+            </p>
+            <div class="success-action">
+              <app-button variant="secondary" (click)="resetForm()">Вернуться к форме</app-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

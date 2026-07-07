@@ -1,0 +1,34 @@
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-top">
+      <a href="#" class="footer-logo" (click)="scrollToTop($event)">
+        <span class="logo-letters">ЗЗ</span>
+        <span class="logo-text">Зарема Зулаева</span>
+      </a>
+
+      <nav class="footer-nav">
+        <a href="#about" (click)="scrollToSection('about', $event)">О специалисте</a>
+        <a href="#approach" (click)="scrollToSection('approach', $event)">Подход</a>
+        <a href="#services" (click)="scrollToSection('services', $event)">Направления</a>
+        <a href="#stories" (click)="scrollToSection('stories', $event)">Истории</a>
+        <a href="#faq" (click)="scrollToSection('faq', $event)">FAQ</a>
+        <a href="#contact" (click)="scrollToSection('contact', $event)">Контакты</a>
+      </nav>
+    </div>
+
+    <div class="footer-mid">
+      <p class="disclaimer">
+        <strong>Отказ от ответственности:</strong> Информация, размещенная на данном сайте, предназначена для ознакомительных целей и самопознания. Она не является заменой профессиональной медицинской или психиатрической помощи, диагностики или лечения. При наличии выраженных клинических расстройств, пожалуйста, своевременно обращайтесь к квалифицированным врачам.
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        &copy; {{ currentYear }} Зарема Зулаева. Все права защищены.
+      </p>
+      <a href="#" class="to-top-link" (click)="scrollToTop($event)">
+        Наверх <span class="arrow">↑</span>
+      </a>
+    </div>
+  </div>
+</footer>

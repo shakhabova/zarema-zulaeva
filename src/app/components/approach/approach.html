@@ -1,0 +1,81 @@
+<section id="approach" class="approach-section">
+  <div class="container">
+    <app-section-title
+      title="Интегративный подход"
+      subtitle="Как строится работа"
+      align="center"
+    ></app-section-title>
+
+    <div class="approach-intro-text">
+      <p>
+        Эффективная терапия не может ограничиваться только разговорами на сознательном уровне. Психика человека многослойна: от физиологических процессов тела до тонких квантовых взаимосвязей информационного поля. Мой метод объединяет четыре уровня восприятия для достижения устойчивых и глубоких изменений.
+      </p>
+    </div>
+
+    <!-- Carousel Slider Container -->
+    <div class="carousel-container">
+      <div class="carousel-track-wrapper">
+        <div 
+          class="carousel-track" 
+          [style.transform]="'translateX(-' + (currentIndex() * (100 / visibleCount())) + '%)'"
+        >
+          <div *ngFor="let pillar of pillars; let idx = index" class="carousel-slide">
+            <app-card [glowing]="idx >= 2" [interactive]="true">
+              <div class="card-inner">
+                <div class="pillar-num">0{{ idx + 1 }}</div>
+                <div class="pillar-header">
+                  <span class="pillar-role">{{ pillar.role }}</span>
+                  <h3 class="pillar-title">{{ pillar.title }}</h3>
+                </div>
+                <p class="pillar-desc">{{ pillar.description }}</p>
+              </div>
+            </app-card>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Navigation controls -->
+      <div class="carousel-controls">
+        <button 
+          class="carousel-nav-btn prev" 
+          (click)="prevSlide()" 
+          [disabled]="currentIndex() === 0"
+          aria-label="Назад"
+        >
+          ←
+        </button>
+        
+        <!-- Indicator dots -->
+        <div class="carousel-dots">
+          <button 
+            *ngFor="let dot of getDotsArray(); let dotIdx = index" 
+            [class.active]="currentIndex() === dotIdx"
+            (click)="setSlide(dotIdx)"
+            [attr.aria-label]="'Перейти к слайду ' + (dotIdx + 1)"
+            class="dot-btn"
+          ></button>
+        </div>
+
+        <button 
+          class="carousel-nav-btn next" 
+          (click)="nextSlide()" 
+          [disabled]="currentIndex() >= (pillars.length - visibleCount())"
+          aria-label="Вперед"
+        >
+          →
+        </button>
+      </div>
+    </div>
+
+    <!-- Explanatory banner at the bottom -->
+    <div class="field-explanation">
+      <div class="explanation-glow"></div>
+      <div class="explanation-content">
+        <h4 class="explanation-title">О полевом подходе простыми словами</h4>
+        <p class="explanation-text">
+          Когда мы говорим о «квантовом поле», мы имеем в виду информационное пространство наших чувств, родовых сценариев и бессознательного. Часто проблема лежит не в плоскости «я всё понимаю умом», а на уровне заблокированной энергии в теле или системной динамики рода. Работа в полевом подходе позволяет бережно вывести эти скрытые процессы на свет и изменить их, восстанавливая естественный поток жизненных сил.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

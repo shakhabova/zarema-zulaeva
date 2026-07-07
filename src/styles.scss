@@ -1,1 +1,189 @@
-/* You can add global styles to this file, and also import other style files */
+/* Design System & Global Styles */
+
+:root {
+  /* Colors */
+  --bg-dark: #090510;
+  --bg-darker: #050209;
+  --bg-card: rgba(18, 11, 30, 0.65);
+  --bg-card-hover: rgba(26, 17, 43, 0.8);
+  
+  --primary: #956bf7;
+  --primary-rgb: 149, 107, 247;
+  --primary-glow: rgba(149, 107, 247, 0.12);
+  --primary-glow-hover: rgba(149, 107, 247, 0.25);
+  
+  --secondary: #d3c7f2;
+  --text-main: #f5f2fa;
+  --text-muted: #9e96b3;
+  --border-color: rgba(149, 107, 247, 0.15);
+  --border-hover: rgba(149, 107, 247, 0.35);
+  
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-fast: all 0.2s ease-in-out;
+}
+
+/* Light Theme Variables */
+[data-theme="light"] {
+  --bg-dark: #f6f3fc;
+  --bg-darker: #ede9f7;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --bg-card-hover: rgba(255, 255, 255, 0.9);
+  
+  --primary: #7540eb;
+  --primary-rgb: 117, 64, 235;
+  --primary-glow: rgba(117, 64, 235, 0.06);
+  --primary-glow-hover: rgba(117, 64, 235, 0.15);
+  
+  --secondary: #583c9b;
+  --text-main: #160e28;
+  --text-muted: #5e5770;
+  --border-color: rgba(117, 64, 235, 0.18);
+  --border-hover: rgba(117, 64, 235, 0.38);
+
+  /* Adjustments for light mode */
+  .quantum-bg-wrapper::before {
+    background-image: url('/images/quantum-bg-light.png');
+    opacity: 0.22;
+    mix-blend-mode: multiply;
+  }
+
+  .field-blobs .blob {
+    opacity: 0.05 !important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(117, 64, 235, 0.25);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(117, 64, 235, 0.45);
+  }
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Base Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(149, 107, 247, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(149, 107, 247, 0.5);
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    padding: 0 1.25rem;
+  }
+}
+
+/* Typography & Titles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+/* Glassmorphism Helper */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  transition: var(--transition-smooth);
+  
+  &:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+  }
+}
+
+/* Quantum Field Glowing Dots (Background Effect) */
+.quantum-bg-wrapper {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/quantum-bg.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.15;
+    mix-blend-mode: color-dodge;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* Text glow */
+.text-glow {
+  text-shadow: 0 0 15px rgba(149, 107, 247, 0.4);
+}
+
+/* Fade-in Animation class */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

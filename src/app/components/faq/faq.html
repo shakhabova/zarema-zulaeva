@@ -1,0 +1,17 @@
+<section id="faq" class="faq-section">
+  <div class="container">
+    <app-section-title
+      title="Часто задаваемые вопросы"
+      subtitle="Пояснения и нюансы"
+      align="center"
+    ></app-section-title>
+
+    <div class="faq-accordion-container">
+      <app-faq-item
+        *ngFor="let item of faqs"
+        [question]="item.question"
+        [answer]="item.answer"
+      ></app-faq-item>
+    </div>
+  </div>
+</section>

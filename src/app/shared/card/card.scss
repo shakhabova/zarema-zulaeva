@@ -1,0 +1,78 @@
+.card-panel {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.4);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .card-content {
+    position: relative;
+    padding: 2.5rem;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    @media (max-width: 768px) {
+      padding: 1.75rem;
+    }
+  }
+
+  /* Interactive follow-the-mouse glow overlay */
+  .card-glow-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background: radial-gradient(350px circle at var(--x, 0px) var(--y, 0px), rgba(149, 107, 247, 0.12), transparent 80%);
+  }
+
+  &.interactive:hover {
+    transform: translateY(-6px);
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    box-shadow: 0 15px 45px 0 rgba(149, 107, 247, 0.15);
+
+    .card-glow-overlay {
+      opacity: 1;
+    }
+  }
+
+  &.glowing {
+    border-color: rgba(149, 107, 247, 0.4);
+    box-shadow: 0 0 30px rgba(149, 107, 247, 0.15);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 10% 10%, rgba(149, 107, 247, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+  .card-panel {
+    .card-glow-overlay {
+      background: radial-gradient(350px circle at var(--x, 0px) var(--y, 0px), rgba(117, 64, 235, 0.08), transparent 80%);
+    }
+  }
+}

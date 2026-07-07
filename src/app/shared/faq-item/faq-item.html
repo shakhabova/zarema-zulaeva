@@ -1,0 +1,14 @@
+<div class="faq-item" [class.open]="isOpen()">
+  <button class="faq-trigger" (click)="toggleOpen()" [attr.aria-expanded]="isOpen()">
+    <span class="faq-question">{{ question }}</span>
+    <span class="faq-icon-wrapper">
+      <span class="faq-icon-line horizontal"></span>
+      <span class="faq-icon-line vertical"></span>
+    </span>
+  </button>
+  <div class="faq-content-wrapper">
+    <div class="faq-content">
+      <p class="faq-answer">{{ answer }}</p>
+    </div>
+  </div>
+</div>

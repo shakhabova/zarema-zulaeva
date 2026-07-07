@@ -1,0 +1,10 @@
+<button
+  [type]="type"
+  [id]="buttonId"
+  [class]="'btn btn-' + variant"
+>
+  <span class="glow-effect"></span>
+  <span class="btn-content">
+    <ng-content></ng-content>
+  </span>
+</button>

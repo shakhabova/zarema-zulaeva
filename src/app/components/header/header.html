@@ -1,0 +1,46 @@
+<header [class.scrolled]="isScrolled()" [class.mobile-open]="isMobileMenuOpen()">
+  <div class="container header-container">
+    <a href="#" class="logo" (click)="scrollToSection('hero', $event)">
+      <span class="logo-letters">ЗЗ</span>
+      <span class="logo-text">Зарема Зулаева</span>
+    </a>
+
+    <!-- Right actions and navigation -->
+    <div class="header-right-area">
+      <!-- Theme Toggle Button -->
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="'Toggle theme'">
+        <span class="theme-icon" *ngIf="currentTheme() === 'dark'">☀️</span>
+        <span class="theme-icon" *ngIf="currentTheme() === 'light'">🌙</span>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <a href="#about" (click)="scrollToSection('about', $event)">О специалисте</a>
+        <a href="#approach" (click)="scrollToSection('approach', $event)">Подход</a>
+        <a href="#services" (click)="scrollToSection('services', $event)">Направления</a>
+        <a href="#stories" (click)="scrollToSection('stories', $event)">Истории</a>
+        <a href="#faq" (click)="scrollToSection('faq', $event)">FAQ</a>
+        <app-button variant="secondary" (click)="scrollToSection('contact', $event)">Записаться</app-button>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu" [class.active]="isMobileMenuOpen()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" [class.open]="isMobileMenuOpen()">
+    <nav class="mobile-links">
+      <a href="#about" (click)="scrollToSection('about', $event)">О специалисте</a>
+      <a href="#approach" (click)="scrollToSection('approach', $event)">Подход</a>
+      <a href="#services" (click)="scrollToSection('services', $event)">Направления</a>
+      <a href="#stories" (click)="scrollToSection('stories', $event)">Истории</a>
+      <a href="#faq" (click)="scrollToSection('faq', $event)">FAQ</a>
+      <app-button variant="primary" (click)="scrollToSection('contact', $event)">Записаться на сессию</app-button>
+    </nav>
+  </div>
+</header>

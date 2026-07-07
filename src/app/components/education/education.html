@@ -1,0 +1,47 @@
+<section id="education" class="education-section">
+  <div class="container">
+    <app-section-title
+      title="Образование и дипломы"
+      subtitle="Квалификация специалиста"
+      align="center"
+    ></app-section-title>
+
+    <div class="diplomas-grid">
+      <div 
+        *ngFor="let diploma of diplomas" 
+        class="diploma-card-wrapper"
+        (click)="openLightbox(diploma.image)"
+      >
+        <app-card [interactive]="true" [glowing]="false">
+          <div class="diploma-inner">
+            <div class="diploma-preview-box">
+              <img [src]="diploma.image" [alt]="diploma.title" class="diploma-img">
+              <div class="zoom-overlay">
+                <span class="zoom-icon">🔍</span>
+                <span class="zoom-text">Увеличить</span>
+              </div>
+            </div>
+            
+            <div class="diploma-info">
+              <span class="diploma-year">{{ diploma.year }}</span>
+              <h3 class="diploma-title">{{ diploma.title }}</h3>
+              <p class="diploma-inst">{{ diploma.institution }}</p>
+            </div>
+          </div>
+        </app-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div 
+    class="diploma-lightbox" 
+    *ngIf="activeDiplomaImage() !== null" 
+    (click)="closeLightbox()"
+  >
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeLightbox()">&times;</button>
+      <img [src]="activeDiplomaImage()" alt="Диплом" class="lightbox-img">
+    </div>
+  </div>
+</section>

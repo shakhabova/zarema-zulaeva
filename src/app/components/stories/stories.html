@@ -1,0 +1,32 @@
+<section id="stories" class="stories-section">
+  <div class="container">
+    <app-section-title
+      title="Фрагменты клиентского пути"
+      subtitle="Опыт изменений"
+      align="center"
+    ></app-section-title>
+
+    <div class="stories-disclaimer">
+      <p>
+        Каждая история публикуется с согласия клиента в обобщенном виде для сохранения полной конфиденциальности. Процесс изменений индивидуален, но эти примеры показывают, как разные методы дополняют друг друга.
+      </p>
+    </div>
+
+    <div class="stories-grid">
+      <app-card *ngFor="let story of stories" [interactive]="true" class="story-card">
+        <div class="story-content-box">
+          <div class="story-header">
+            <span class="story-badge">{{ story.method }}</span>
+            <h4 class="story-request">{{ story.request }}</h4>
+          </div>
+          
+          <p class="story-text">{{ story.narrative }}</p>
+          
+          <div class="story-result">
+            <p class="result-text">{{ story.resultState }}</p>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</section>

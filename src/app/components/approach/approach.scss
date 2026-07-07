@@ -1,0 +1,221 @@
+.approach-section {
+  padding: 100px 0;
+  background-color: var(--bg-darker);
+  position: relative;
+  overflow: hidden;
+
+  /* Intro paragraph */
+  .approach-intro-text {
+    max-width: 800px;
+    margin: -1.5rem auto 4.5rem auto;
+    text-align: center;
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+  }
+
+  /* Carousel Container */
+  .carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .carousel-track-wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0; /* padding for active card shadows/offsets */
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+  }
+
+  .carousel-slide {
+    flex: 0 0 50%; /* 2 cards on desktop */
+    padding: 0 1.25rem; /* acts as gap between slides */
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      flex: 0 0 100%; /* 1 card on mobile */
+      padding: 0 0.5rem;
+    }
+  }
+
+  /* Card inner content */
+  .card-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+  }
+
+  .pillar-num {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 500;
+    line-height: 1;
+    color: rgba(149, 107, 247, 0.08);
+    transition: var(--transition-smooth);
+  }
+
+  ::ng-deep app-card:hover .pillar-num {
+    color: rgba(149, 107, 247, 0.18);
+    transform: translateY(-5px);
+  }
+
+  .pillar-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(149, 107, 247, 0.1);
+    padding-bottom: 1rem;
+  }
+
+  .pillar-title {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+    font-weight: 400;
+    font-family: var(--font-serif);
+  }
+
+  .pillar-role {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  .pillar-desc {
+    font-size: 0.975rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* Controls (arrows + dots) */
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .carousel-nav-btn {
+    background: rgba(149, 107, 247, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: var(--transition-smooth);
+    outline: none;
+
+    &:hover:not(:disabled) {
+      background: rgba(149, 107, 247, 0.15);
+      border-color: var(--border-hover);
+      transform: scale(1.05);
+    }
+
+    &:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .dot-btn {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(149, 107, 247, 0.2);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    padding: 0;
+    outline: none;
+
+    &:hover {
+      background: rgba(149, 107, 247, 0.5);
+    }
+
+    &.active {
+      background: var(--primary);
+      width: 24px; /* elongated active dot */
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(149, 107, 247, 0.5);
+    }
+  }
+
+  /* Field explanation box at the bottom */
+  .field-explanation {
+    margin-top: 6rem;
+    position: relative;
+    padding: 3.5rem;
+    background: rgba(149, 107, 247, 0.02);
+    border: 1px solid rgba(149, 107, 247, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      padding: 2.25rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .explanation-glow {
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(149, 107, 247, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .explanation-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .explanation-title {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      font-weight: 400;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .explanation-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+      text-align: justify;
+      text-align-last: center;
+    }
+  }
+}

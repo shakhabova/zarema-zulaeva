@@ -1,0 +1,11 @@
+<div 
+  [class]="'card-panel ' + (glowing ? 'glowing ' : '') + (interactive ? 'interactive' : '')"
+  (mousemove)="onMouseMove($event)"
+>
+  <!-- Interactive background radial glow -->
+  <div class="card-glow-overlay" *ngIf="interactive"></div>
+  
+  <div class="card-content">
+    <ng-content></ng-content>
+  </div>
+</div>
