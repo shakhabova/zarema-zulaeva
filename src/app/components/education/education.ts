@@ -25,37 +25,37 @@ export class EducationComponent {
       title: 'Клинический психолог',
       institution: 'Московский Институт Психоанализа (МИП, Москва)',
       year: 'Диплом МИП',
-      image: '/images/diploma-clinical.png'
+      image: 'images/diploma-clinical.png'
     },
     {
       title: 'Психолог-диетолог',
       institution: 'Московский Институт Психоанализа (МИП, Москва)',
       year: 'Диплом МИП',
-      image: '/images/diploma-dietology.png'
+      image: 'images/diploma-dietology.png'
     },
     {
       title: 'Системный психотерапевт',
       institution: 'ИКСР (Москва) & Институт WISSLOCH (Вислох, Германия)',
       year: 'Сертификат',
-      image: '/images/diploma-constellations.png'
+      image: 'images/diploma-constellations.png'
     },
     {
       title: 'Квантовый психолог',
       institution: 'Центр Леонида Тальписа (Москва)',
       year: 'Диплом',
-      image: '/images/diploma-quantum.png'
+      image: 'images/diploma-quantum.png'
     },
     {
       title: 'Суггестолог, Гипнотерапевт',
       institution: 'Центр психоэнергетических исследований (Москва)',
       year: 'Сертификат',
-      image: '/images/diploma-clinical.png'
+      image: 'images/diploma-clinical.png'
     },
     {
       title: 'Лингвист & Юрист',
       institution: 'Обучение: Россия, Венгрия, Норвегия | Практика: США',
       year: '2 Диплома',
-      image: '/images/diploma-dietology.png'
+      image: 'images/diploma-dietology.png'
     }
   ];
 
