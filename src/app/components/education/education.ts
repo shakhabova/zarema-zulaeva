@@ -13,7 +13,7 @@ interface Diploma {
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [CommonModule, SectionTitleComponent, CardComponent],
+  imports: [CommonModule, SectionTitleComponent],
   templateUrl: './education.html',
   styleUrl: './education.scss'
 })
@@ -22,29 +22,50 @@ export class EducationComponent {
 
   protected readonly diplomas: Diploma[] = [
     {
-      title: 'Диплом о высшем клиническом образовании',
-      institution: 'Московский Государственный Университет (МГУ)',
-      year: '2016',
+      title: 'Клинический психолог',
+      institution: 'Московский Институт Психоанализа (МИП, Москва)',
+      year: 'Диплом МИП',
       image: '/images/diploma-clinical.png'
     },
     {
-      title: 'Сертификат специалиста по психодиетологии',
-      institution: 'Академия интегративной нутрициологии и диетотерапии',
-      year: '2018',
+      title: 'Психолог-диетолог',
+      institution: 'Московский Институт Психоанализа (МИП, Москва)',
+      year: 'Диплом МИП',
       image: '/images/diploma-dietology.png'
     },
     {
-      title: 'Диплом квантового полевого терапевта',
-      institution: 'Международный Институт Квантовой Психологии',
-      year: '2020',
+      title: 'Системный психотерапевт',
+      institution: 'ИКСР (Москва) & Институт WISSLOCH (Вислох, Германия)',
+      year: 'Сертификат',
+      image: '/images/diploma-constellations.png'
+    },
+    {
+      title: 'Квантовый психолог',
+      institution: 'Центр Леонида Тальписа (Москва)',
+      year: 'Диплом',
       image: '/images/diploma-quantum.png'
     },
     {
-      title: 'Диплом специалиста по системным расстановкам',
-      institution: 'Центр системных семейных решений',
-      year: '2021',
-      image: '/images/diploma-constellations.png'
+      title: 'Суггестолог, Гипнотерапевт',
+      institution: 'Центр психоэнергетических исследований (Москва)',
+      year: 'Сертификат',
+      image: '/images/diploma-clinical.png'
+    },
+    {
+      title: 'Лингвист & Юрист',
+      institution: 'Обучение: Россия, Венгрия, Норвегия | Практика: США',
+      year: '2 Диплома',
+      image: '/images/diploma-dietology.png'
     }
+  ];
+
+  protected readonly additionalCourses: string[] = [
+    'Краткосрочная психотерапия и экспресс-методы трансформации',
+    'Работа с психологической травмой и исцелением',
+    'Сексуальная психотерапия пар и семейное консультирование',
+    'Энергетическое целительство (Рейки)',
+    'Обучение навыкам диалектико-поведенческой терапии (ДБТ / DBT)',
+    'Семинары и супервизионные практики по расстановочной работе'
   ];
 
   openLightbox(image: string) {

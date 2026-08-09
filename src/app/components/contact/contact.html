@@ -2,7 +2,7 @@
   <div class="container">
     <div class="contact-grid">
       <!-- Contact details column -->
-      <div class="details-column">
+      <div class="details-column reveal reveal-left">
         <app-section-title
           title="Запись на сессию"
           subtitle="Связаться со мной"
@@ -10,7 +10,7 @@
         ></app-section-title>
 
         <p class="contact-intro">
-          Сделайте первый шаг навстречу изменениям. Вы можете заполнить форму обратной связи или написать мне напрямую в удобный для вас мессенджер.
+          Сделайте первый шаг навстречу изменениям. Вы можете сформировать заявку в форме справа, указав детали сессии, и отправить её мне напрямую в WhatsApp, либо связаться через мессенджеры.
         </p>
 
         <div class="info-blocks">
@@ -39,42 +39,12 @@
       </div>
 
       <!-- Form column -->
-      <div class="form-column">
+      <div class="form-column reveal reveal-right">
         <div class="form-container glass-panel" [class.success-state]="isSubmitted()">
           <!-- Normal Form State -->
           <form *ngIf="!isSubmitted()" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="booking-form" novalidate>
-            <div class="form-group">
-              <label for="name" class="input-label">Ваше имя</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
-                class="form-input" 
-                placeholder="Имя" 
-                required
-                [(ngModel)]="formData.name"
-                #nameModel="ngModel"
-                [class.invalid]="nameModel.invalid && nameModel.touched"
-              >
-              <span class="error-msg" *ngIf="nameModel.invalid && nameModel.touched">Пожалуйста, укажите ваше имя</span>
-            </div>
-
-            <div class="form-group">
-              <label for="contact" class="input-label">Телефон / Telegram / WhatsApp</label>
-              <input 
-                type="text" 
-                id="contact" 
-                name="contact" 
-                class="form-input" 
-                placeholder="@username или +7..." 
-                required
-                [(ngModel)]="formData.contact"
-                #contactModel="ngModel"
-                [class.invalid]="contactModel.invalid && contactModel.touched"
-              >
-              <span class="error-msg" *ngIf="contactModel.invalid && contactModel.touched">Пожалуйста, укажите контактные данные</span>
-            </div>
-
+            
+            <!-- Service Selection -->
             <div class="form-group">
               <label for="service" class="input-label">Направление запроса</label>
               <div class="select-wrapper">
@@ -90,21 +60,55 @@
               </div>
             </div>
 
+            <!-- Format Selection -->
             <div class="form-group">
-              <label for="message" class="input-label">Краткое описание запроса (необязательно)</label>
+              <label for="format" class="input-label">Формат проведения встреч</label>
+              <div class="select-wrapper">
+                <select 
+                  id="format" 
+                  name="format" 
+                  class="form-input select-input" 
+                  required
+                  [(ngModel)]="formData.format"
+                >
+                  <option *ngFor="let f of formats" [value]="f.value">{{ f.label }}</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Preferred Time Selection -->
+            <div class="form-group">
+              <label for="preferredTime" class="input-label">Желательное время связи</label>
+              <div class="select-wrapper">
+                <select 
+                  id="preferredTime" 
+                  name="preferredTime" 
+                  class="form-input select-input" 
+                  required
+                  [(ngModel)]="formData.preferredTime"
+                >
+                  <option *ngFor="let t of times" [value]="t.value">{{ t.label }}</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Description Textarea -->
+            <div class="form-group">
+              <label for="message" class="input-label">Суть вашего запроса (необязательно)</label>
               <textarea 
                 id="message" 
                 name="message" 
                 class="form-input textarea-input" 
-                placeholder="Что вас беспокоит..." 
+                placeholder="Что вас беспокоит, с какими симптомами или ситуациями хотите поработать..." 
                 rows="4"
                 [(ngModel)]="formData.message"
               ></textarea>
             </div>
 
+            <!-- Submit Button (Direct to WhatsApp) -->
             <div class="form-action">
               <app-button variant="primary" type="submit" [buttonId]="'submit-booking'">
-                Отправить запрос
+                Отправить запрос в WhatsApp
               </app-button>
             </div>
           </form>
@@ -114,12 +118,12 @@
             <div class="success-icon-wrapper">
               <span class="success-icon">✦</span>
             </div>
-            <h4 class="success-title">Запрос отправлен в поле</h4>
+            <h4 class="success-title">Запрос сформирован</h4>
             <p class="success-text">
-              Спасибо за доверие, <strong>{{ formData.name }}</strong>. Ваша заявка успешно принята. Я свяжусь с вами в ближайшее время для согласования даты и времени первой встречи.
+              Ваш запрос успешно сгенерирован и перенаправлен в чат WhatsApp. Если чат не открылся автоматически, пожалуйста, убедитесь, что вы разрешили всплывающие окна, или заполните форму заново.
             </p>
             <div class="success-action">
-              <app-button variant="secondary" (click)="resetForm()">Вернуться к форме</app-button>
+              <app-button variant="secondary" (click)="resetForm()">Сформировать новый запрос</app-button>
             </div>
           </div>
         </div>

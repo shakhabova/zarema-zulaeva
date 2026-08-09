@@ -8,8 +8,8 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    background: rgba(18, 11, 30, 0.4);
-    border: 1px solid rgba(149, 107, 247, 0.1);
+    background: rgba(29, 24, 37, 0.4);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
     border-radius: 20px;
     padding: 1rem 2.5rem;
     backdrop-filter: blur(16px);
@@ -19,5 +19,14 @@
     @media (max-width: 768px) {
       padding: 0.5rem 1.5rem;
     }
+  }
+}
+
+/* Light theme overrides */
+:host-context([data-theme="light"]) {
+  .faq-accordion-container {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(var(--primary-rgb), 0.12);
+    box-shadow: 0 10px 40px rgba(var(--primary-rgb), 0.05);
   }
 }

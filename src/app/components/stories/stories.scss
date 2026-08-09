@@ -44,7 +44,7 @@
   }
 
   .story-header {
-    border-bottom: 1px solid rgba(149, 107, 247, 0.1);
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
     padding-bottom: 1rem;
   }
 
@@ -74,10 +74,10 @@
   }
 
   .story-result {
-    background: rgba(149, 107, 247, 0.03);
+    background: rgba(var(--primary-rgb), 0.03);
     border-radius: 8px;
     padding: 1rem;
-    border-left: 2px solid rgba(149, 107, 247, 0.3);
+    border-left: 2px solid rgba(var(--primary-rgb), 0.3);
 
     .result-text {
       font-size: 0.9rem;

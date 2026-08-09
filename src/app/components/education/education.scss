@@ -1,46 +1,89 @@
 .education-section {
-  padding: 100px 0;
+  padding: 100px 0 130px 0;
   background-color: var(--bg-dark);
   position: relative;
   overflow: hidden;
 
+  /* Staggered grid offsets for dynamic visual flow */
   .diplomas-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 2.5rem;
     margin-top: 4rem;
+
+    @media (min-width: 1200px) {
+      .diploma-card-wrapper:nth-child(even) {
+        transform: translateY(35px);
+      }
+    }
 
     @media (max-width: 1200px) {
       grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 2rem;
     }
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 2.5rem;
     }
   }
 
   .diploma-card-wrapper {
     cursor: pointer;
     height: 100%;
+    transition: var(--transition-smooth);
   }
 
-  .diploma-inner {
+  .diploma-gallery-item {
     display: flex;
     flex-direction: column;
     height: 100%;
-    gap: 1.5rem;
+  }
+
+  /* Passe-partout Frame effect */
+  .diploma-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.414;
+    /* A4 aspect ratio */
+    background: #0e1a30;
+    padding: 10px;
+    /* White border offset mock */
+    border: 1px solid rgba(var(--primary-rgb), 0.25);
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+    transition: var(--transition-smooth);
+    overflow: hidden;
+    z-index: 1;
+
+    /* Sweeping glass diagonal reflection sweep */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to right,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.15) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      transform: skewX(-25deg);
+      transition: 0.75s ease-out;
+      z-index: 3;
+      pointer-events: none;
+    }
   }
 
   .diploma-preview-box {
     position: relative;
     width: 100%;
-    aspect-ratio: 1.414; /* Standard A4 paper landscape aspect ratio */
-    border-radius: 8px;
+    height: 100%;
+    border-radius: 4px;
     overflow: hidden;
     background-color: var(--bg-darker);
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 
     .diploma-img {
       width: 100%;
@@ -55,7 +98,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(9, 5, 16, 0.65);
+      background: rgba(29, 24, 37, 0.75);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -67,53 +110,137 @@
     }
   }
 
-  ::ng-deep app-card:hover {
-    .diploma-preview-box .diploma-img {
-      transform: scale(1.04);
+  /* Hover Actions */
+  .diploma-card-wrapper:hover {
+    .diploma-frame {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: 0 25px 45px rgba(var(--primary-rgb), 0.15);
+
+      &::after {
+        left: 150%;
+      }
     }
+
+    .diploma-preview-box .diploma-img {
+      transform: scale(1.05);
+    }
+
     .zoom-overlay {
       opacity: 1;
     }
   }
 
   .zoom-icon {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: var(--primary);
   }
 
   .zoom-text {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-main);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 500;
   }
 
+  /* Editorial Typography Info style */
   .diploma-info {
+    margin-top: 1.75rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 0.5rem;
+    padding: 0 0.5rem;
   }
 
   .diploma-year {
     font-family: var(--font-serif);
-    font-size: 1.25rem;
+    font-size: 1.35rem;
+    font-style: italic;
     color: var(--primary);
     font-weight: 500;
     line-height: 1;
   }
 
   .diploma-title {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 400;
     color: var(--text-main);
-    line-height: 1.4;
+    line-height: 1.45;
+    max-width: 250px;
+  }
+
+  .diploma-divider {
+    width: 24px;
+    height: 1px;
+    background: rgba(var(--primary-rgb), 0.25);
+    margin: 0.25rem 0;
   }
 
   .diploma-inst {
-    font-size: 0.85rem;
-    line-height: 1.5;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--text-muted);
+    line-height: 1.5;
+    max-width: 230px;
+  }
+
+  /* Additional Courses Box */
+  .additional-education-box {
+    margin-top: 4.5rem;
+    padding: 2.5rem 3rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+
+    @media (max-width: 768px) {
+      padding: 2rem 1.5rem;
+    }
+
+    .box-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 1.75rem;
+      text-align: center;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem 2.5rem;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .course-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+
+      .course-badge {
+        color: var(--primary);
+        font-size: 0.85rem;
+        margin-top: 0.15rem;
+      }
+
+      .course-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: var(--text-main);
+        font-weight: 450;
+      }
+    }
   }
 
   /* Lightbox Styles */
@@ -140,7 +267,7 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(149, 107, 247, 0.25);
+    border: 1px solid rgba(var(--primary-rgb), 0.25);
   }
 
   .close-btn {
@@ -173,26 +300,51 @@
 /* Light Theme overrides */
 [data-theme="light"] {
   .education-section {
+    .diploma-frame {
+      background: #ffffff;
+      border-color: rgba(var(--primary-rgb), 0.16);
+      box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.05);
+
+      &::after {
+        background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(var(--primary-rgb), 0.06) 50%,
+            rgba(255, 255, 255, 0) 100%);
+      }
+    }
+
     .diploma-preview-box {
-      border-color: rgba(117, 64, 235, 0.15);
-      background-color: var(--bg-darker);
+      border-color: rgba(var(--primary-rgb), 0.12);
+      background-color: #fcfbfe;
+      box-shadow: inset 0 0 10px rgba(var(--primary-rgb), 0.05);
     }
-    
+
     .zoom-overlay {
-      background: rgba(246, 243, 252, 0.7);
+      background: rgba(246, 243, 252, 0.8);
     }
-    
+
     .zoom-text {
       color: var(--text-main);
     }
-    
+
+    .diploma-divider {
+      background: rgba(var(--primary-rgb), 0.2);
+    }
+
+    .diploma-card-wrapper:hover {
+      .diploma-frame {
+        border-color: var(--primary);
+        box-shadow: 0 22px 45px rgba(var(--primary-rgb), 0.1);
+      }
+    }
+
     .diploma-lightbox {
       background: rgba(246, 243, 252, 0.96);
     }
-    
+
     .close-btn {
       color: var(--text-main);
-      
+
       &:hover {
         color: var(--primary);
       }

@@ -12,23 +12,10 @@ import { ButtonComponent } from '../../shared/button/button';
 export class HeaderComponent {
   protected readonly isScrolled = signal(false);
   protected readonly isMobileMenuOpen = signal(false);
-  protected readonly currentTheme = signal<'dark' | 'light'>('dark');
 
   constructor() {
     if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;
-      const theme = savedTheme || 'dark';
-      this.currentTheme.set(theme);
-      document.documentElement.setAttribute('data-theme', theme);
-    }
-  }
-
-  toggleTheme() {
-    const nextTheme = this.currentTheme() === 'dark' ? 'light' : 'dark';
-    this.currentTheme.set(nextTheme);
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('theme', nextTheme);
-      document.documentElement.setAttribute('data-theme', nextTheme);
+      document.documentElement.setAttribute('data-theme', 'light');
     }
   }
 
@@ -53,7 +40,7 @@ export class HeaderComponent {
       const headerOffset = 90;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'

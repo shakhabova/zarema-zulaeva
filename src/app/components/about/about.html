@@ -1,47 +1,57 @@
 <section id="about" class="about-section">
   <div class="container">
-    <app-section-title title="О специалисте" subtitle="Профессиональный путь" align="left"></app-section-title>
+    <app-section-title title="О специалисте" subtitle="Профессиональный путь и опыт" align="left"></app-section-title>
 
     <div class="about-grid">
       <!-- Left Column: Asymmetric Editorial Photo Frame -->
-      <div class="about-image-column">
+      <div class="about-image-column reveal reveal-left">
         <div class="image-frame">
-          <img src="/images/psychologist-about.png" alt="Зарема Зулаева — О психологе" class="about-img">
+          <img src="/images/IMG_3695.PNG" alt="Зарема Зулаева — О психологе" class="about-img">
         </div>
         <div class="frame-border"></div>
       </div>
 
       <!-- Right Column: Biography & Quote -->
-      <div class="about-text-column">
+      <div class="about-text-column reveal reveal-right">
         <blockquote class="about-quote">
           <span class="quote-mark">“</span>
           <p class="quote-text">
-            Моя задача — не просто облегчить симптомы, а помочь вам восстановить связь с собственной сутью и обнаружить
-            скрытые ресурсы вашей семейной и квантовой системы.
+            Глубокая психотерапия создается на стыке фундаментальной клинической науки, структурного понимания системных процессов и бережного контакта с человеческой сутью.
           </p>
         </blockquote>
 
         <div class="about-bio">
           <p>
-            Приветствую вас. Меня зовут <strong>Зарема Зулаева</strong>. Я практикую интегративный подход к
-            психотерапии, объединяя фундаментальные клинические знания с инновационными методами квантовой психологии и
-            системных расстановок.
+            Приветствую вас. Меня зовут <strong>Зарема Зулаева</strong>. Мой путь в терапию обогащен масштабным междисциплинарным бекграундом — высшим лингвистическим и юридическим образованием (обучение в России, Венгрии, Норвегии, юридическая практика в США), а также 15-летним опытом работы в правовом отделе и программах УВКБ ООН.
           </p>
           <p>
-            Получив базовое клиническое образование, я осознала, что человеческая психика — это не изолированный
-            механизм. Наша телесность, пищевые привычки (психодиетология), семейные динамики и даже квантовые
-            информационные поля неразрывно переплетены. Именно поэтому в своей практике я использую междисциплинарный
-            подход, который позволяет находить первопричины запросов быстрее и глубже.
+            С 2014 года я сосредоточилась на психотерапевтической науке, пройдя дипломированную подготовку по клинической психологии и психодиетологии в МИП (Москва), системной психотерапии (ИКСР, Москва & Институт Вислох, Германия), квантовой ВсеЛенской терапии в Центре Леонида Тальписа и гипнотерапии.
+          </p>
+          <p>
+            С 2015 года я веду частную практику (Москва, Грозный, онлайн по всему миру). В работе я применяю интегративный подход, позволяющий сочетать глубокий психоанализ, работу с телом и мышлением, системные расстановки и квантовые технологии трансформации.
           </p>
         </div>
       </div>
     </div>
 
     <!-- Wide Metrics Panel below the main grid -->
-    <div class="about-stats-panel">
+    <div class="about-stats-panel reveal">
       <div *ngFor="let item of experience" class="stat-box">
         <span class="stat-number">{{ item.year }}</span>
         <p class="stat-text">{{ item.text }}</p>
+      </div>
+    </div>
+
+    <!-- Professional Experience Timeline -->
+    <div class="about-timeline-container reveal">
+      <h3 class="timeline-section-title">Опыт работы и ключевые этапы</h3>
+      <div class="timeline-grid">
+        <div *ngFor="let item of timeline" class="timeline-card">
+          <span class="timeline-period">{{ item.period }}</span>
+          <h4 class="timeline-role">{{ item.role }}</h4>
+          <p class="timeline-place">{{ item.place }}</p>
+          <p *ngIf="item.description" class="timeline-desc">{{ item.description }}</p>
+        </div>
       </div>
     </div>
   </div>

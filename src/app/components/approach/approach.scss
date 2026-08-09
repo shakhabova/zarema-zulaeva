@@ -9,7 +9,7 @@
     max-width: 800px;
     margin: -1.5rem auto 4.5rem auto;
     text-align: center;
-    
+
     p {
       font-size: 1.1rem;
       line-height: 1.75;
@@ -27,7 +27,8 @@
   .carousel-track-wrapper {
     overflow: hidden;
     width: 100%;
-    padding: 10px 0; /* padding for active card shadows/offsets */
+    padding: 10px 0;
+    /* padding for active card shadows/offsets */
   }
 
   .carousel-track {
@@ -37,12 +38,15 @@
   }
 
   .carousel-slide {
-    flex: 0 0 50%; /* 2 cards on desktop */
-    padding: 0 1.25rem; /* acts as gap between slides */
+    flex: 0 0 50%;
+    /* 2 cards on desktop */
+    padding: 0 1.25rem;
+    /* acts as gap between slides */
     box-sizing: border-box;
 
     @media (max-width: 768px) {
-      flex: 0 0 100%; /* 1 card on mobile */
+      flex: 0 0 100%;
+      /* 1 card on mobile */
       padding: 0 0.5rem;
     }
   }
@@ -63,18 +67,18 @@
     font-size: 3.5rem;
     font-weight: 500;
     line-height: 1;
-    color: rgba(149, 107, 247, 0.08);
+    color: rgba(var(--primary-rgb), 0.08);
     transition: var(--transition-smooth);
   }
 
   ::ng-deep app-card:hover .pillar-num {
-    color: rgba(149, 107, 247, 0.18);
+    color: rgba(var(--primary-rgb), 0.18);
     transform: translateY(-5px);
   }
 
   .pillar-header {
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(149, 107, 247, 0.1);
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
     padding-bottom: 1rem;
   }
 
@@ -111,7 +115,7 @@
   }
 
   .carousel-nav-btn {
-    background: rgba(149, 107, 247, 0.05);
+    background: rgba(var(--primary-rgb), 0.05);
     border: 1px solid var(--border-color);
     color: var(--text-main);
     width: 50px;
@@ -126,7 +130,7 @@
     outline: none;
 
     &:hover:not(:disabled) {
-      background: rgba(149, 107, 247, 0.15);
+      background: rgba(var(--primary-rgb), 0.15);
       border-color: var(--border-hover);
       transform: scale(1.05);
     }
@@ -147,21 +151,22 @@
     height: 10px;
     border-radius: 50%;
     border: none;
-    background: rgba(149, 107, 247, 0.2);
+    background: rgba(var(--primary-rgb), 0.2);
     cursor: pointer;
     transition: var(--transition-smooth);
     padding: 0;
     outline: none;
 
     &:hover {
-      background: rgba(149, 107, 247, 0.5);
+      background: rgba(var(--primary-rgb), 0.5);
     }
 
     &.active {
       background: var(--primary);
-      width: 24px; /* elongated active dot */
+      width: 24px;
+      /* elongated active dot */
       border-radius: 5px;
-      box-shadow: 0 0 10px rgba(149, 107, 247, 0.5);
+      box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
     }
   }
 
@@ -170,8 +175,8 @@
     margin-top: 6rem;
     position: relative;
     padding: 3.5rem;
-    background: rgba(149, 107, 247, 0.02);
-    border: 1px solid rgba(149, 107, 247, 0.1);
+    background: rgba(var(--primary-rgb), 0.02);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
     border-radius: 20px;
     overflow: hidden;
 
@@ -186,7 +191,7 @@
       right: -150px;
       width: 300px;
       height: 300px;
-      background: radial-gradient(circle, rgba(149, 107, 247, 0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(var(--primary-rgb), 0.12) 0%, transparent 70%);
       pointer-events: none;
     }
 

@@ -1,4 +1,12 @@
 <section id="hero" class="hero-section quantum-bg-wrapper">
+  <!-- Background Video -->
+  <div class="hero-video-bg">
+    <video #bgVideo autoplay [muted]="true" loop playsinline preload="auto" (loadedmetadata)="setVideoSpeed()" (play)="setVideoSpeed()">
+      <source src="/images/brain.MP4" type="video/mp4" media="(min-width: 769px)">
+      <source src="/images/brain2.mp4" type="video/mp4" media="(max-width: 768px)">
+    </video>
+    <div class="video-overlay"></div>
+  </div>
   <!-- Glowing field particles decoration -->
   <div class="field-blobs">
     <div class="blob blob-1"></div>
@@ -14,38 +22,18 @@
       <!-- Redesigned Editorial Tagline Grid -->
       <div class="hero-tagline-grid">
         <span class="tagline-item">Клинический психолог</span>
-        <span class="tagline-item">Психодиетолог</span>
-        <span class="tagline-item">Квантовый психолог</span>
-        <span class="tagline-item">Расстановщик</span>
+        <span class="tagline-item">Психолог-диетолог</span>
+        <span class="tagline-item">Системный терапевт (Вислох, Германия)</span>
+        <span class="tagline-item">Квантовый психолог (Центр Л. Тальписа)</span>
+        <span class="tagline-item">Гипнотерапевт & Суггестолог</span>
       </div>
 
       <p class="hero-description">
-        Интегративный подход на стыке доказательной науки, глубокой работы с телом, системных динамик и квантового
-        полевого подхода. Помогаю выйти из повторяющихся сценариев, восстановить контакт с собой и обрести внутреннюю
-        опору.
+        Интегративный подход на стыке доказательной клинической психологии (МИП), психодиетологии, квантовой ВсеЛенской терапия Леонида Тальписа, клиент-центрированных расстановок (ИКСР / Вислох, Германия) и гипнотерапии. Очная практика в Москве и Грозном, онлайн-сессии по всему миру.
       </p>
       <div class="hero-actions">
         <app-button variant="primary" (click)="scrollToSection('contact')">Записаться на сессию</app-button>
         <app-button variant="outline" (click)="scrollToSection('approach')">Узнать о подходе</app-button>
-      </div>
-    </div>
-
-    <!-- Redesigned Photo Wrapper with Arch Shape and Floating Badges -->
-    <div class="hero-image-wrapper fade-in">
-      <!-- Floating Badges -->
-
-
-      <div class="quantum-halo">
-        <div class="halo-line halo-1"></div>
-        <div class="halo-line halo-2"></div>
-        <div class="halo-line halo-3"></div>
-      </div>
-      <div class="image-container">
-        <!-- Psychologist Image (Dark Theme) -->
-        <img src="/images/psychologist-hero.png" alt="Зарема Зулаева" class="psychologist-img theme-dark-img">
-        <!-- Psychologist Image (Light Theme) -->
-        <img src="/images/psychologist-hero-light.png" alt="Зарема Зулаева" class="psychologist-img theme-light-img">
-        <div class="image-gradient-overlay"></div>
       </div>
     </div>
   </div>

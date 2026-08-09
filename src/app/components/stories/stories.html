@@ -6,13 +6,13 @@
       align="center"
     ></app-section-title>
 
-    <div class="stories-disclaimer">
+    <div class="stories-disclaimer reveal">
       <p>
         Каждая история публикуется с согласия клиента в обобщенном виде для сохранения полной конфиденциальности. Процесс изменений индивидуален, но эти примеры показывают, как разные методы дополняют друг друга.
       </p>
     </div>
 
-    <div class="stories-grid">
+    <div class="stories-grid reveal-stagger">
       <app-card *ngFor="let story of stories" [interactive]="true" class="story-card">
         <div class="story-content-box">
           <div class="story-header">

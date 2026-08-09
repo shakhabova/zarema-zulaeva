@@ -1,27 +1,30 @@
 /* Design System & Global Styles */
 
 :root {
-  /* Colors */
-  --bg-dark: #090510;
-  --bg-darker: #050209;
-  --bg-card: rgba(18, 11, 30, 0.65);
-  --bg-card-hover: rgba(26, 17, 43, 0.8);
-  
-  --primary: #956bf7;
-  --primary-rgb: 149, 107, 247;
-  --primary-glow: rgba(149, 107, 247, 0.12);
-  --primary-glow-hover: rgba(149, 107, 247, 0.25);
-  
-  --secondary: #d3c7f2;
-  --text-main: #f5f2fa;
-  --text-muted: #9e96b3;
-  --border-color: rgba(149, 107, 247, 0.15);
-  --border-hover: rgba(149, 107, 247, 0.35);
-  
+  /* Colors — Luxury Teal Brand Identity */
+  --bg-dark: #0c1517;
+  --bg-darker: #070e0f;
+  --bg-card: rgba(16, 28, 31, 0.65);
+  --bg-card-hover: rgba(26, 44, 48, 0.8);
+  --bg-header: rgba(12, 21, 23, 0.8);
+
+  --primary: #00a896;
+  --primary-rgb: 0, 168, 150;
+  --primary-glow: rgba(0, 168, 150, 0.12);
+  --primary-glow-hover: rgba(0, 168, 150, 0.25);
+  --gradient-end: #028090;
+
+  --accent: #16282b;
+  --secondary: #f2f7f8;
+  --text-main: #fafdfd;
+  --text-muted: #8aa3a7;
+  --border-color: rgba(0, 168, 150, 0.18);
+  --border-hover: rgba(0, 168, 150, 0.38);
+
   /* Fonts */
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  
+  --font-serif: 'Bookman Old Style', Bookman, 'URW Bookman L', serif;
+  --font-sans: 'Bookman Old Style', Bookman, 'URW Bookman L', serif;
+
   /* Transitions */
   --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   --transition-fast: all 0.2s ease-in-out;
@@ -29,21 +32,24 @@
 
 /* Light Theme Variables */
 [data-theme="light"] {
-  --bg-dark: #f6f3fc;
-  --bg-darker: #ede9f7;
-  --bg-card: rgba(255, 255, 255, 0.7);
-  --bg-card-hover: rgba(255, 255, 255, 0.9);
-  
-  --primary: #7540eb;
-  --primary-rgb: 117, 64, 235;
-  --primary-glow: rgba(117, 64, 235, 0.06);
-  --primary-glow-hover: rgba(117, 64, 235, 0.15);
-  
-  --secondary: #583c9b;
-  --text-main: #160e28;
-  --text-muted: #5e5770;
-  --border-color: rgba(117, 64, 235, 0.18);
-  --border-hover: rgba(117, 64, 235, 0.38);
+  --bg-dark: #ffffff;
+  --bg-darker: #f4f9f8;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-card-hover: rgba(255, 255, 255, 0.95);
+  --bg-header: rgba(255, 255, 255, 0.85);
+
+  --primary: #028090;
+  --primary-rgb: 2, 128, 144;
+  --primary-glow: rgba(2, 128, 144, 0.06);
+  --primary-glow-hover: rgba(2, 128, 144, 0.15);
+  --gradient-end: #005f73;
+
+  --accent: #e0f2f1;
+  --secondary: #1a3539;
+  --text-main: #0a1718;
+  --text-muted: #2d4245;
+  --border-color: rgba(2, 128, 144, 0.18);
+  --border-hover: rgba(2, 128, 144, 0.38);
 
   /* Adjustments for light mode */
   .quantum-bg-wrapper::before {
@@ -52,16 +58,19 @@
     mix-blend-mode: multiply;
   }
 
-  .field-blobs .blob {
-    opacity: 0.05 !important;
+  /* Keep dark background grid specifically on the hero block */
+  #hero.quantum-bg-wrapper::before {
+    background-image: url('/images/quantum-bg.png') !important;
+    opacity: 0.15 !important;
+    mix-blend-mode: color-dodge !important;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: rgba(117, 64, 235, 0.25);
+    background: rgba(var(--primary-rgb), 0.25);
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(117, 64, 235, 0.45);
+    background: rgba(var(--primary-rgb), 0.45);
   }
 }
 
@@ -75,7 +84,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  
+
   @media (max-width: 768px) {
     font-size: 15px;
   }
@@ -96,15 +105,18 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-darker);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: rgba(149, 107, 247, 0.3);
+  background: rgba(var(--primary-rgb), 0.3);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(149, 107, 247, 0.5);
+  background: rgba(var(--primary-rgb), 0.5);
 }
 
 /* Layout Utilities */
@@ -112,14 +124,19 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  
+
   @media (max-width: 768px) {
     padding: 0 1.25rem;
   }
 }
 
 /* Typography & Titles */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -138,7 +155,7 @@ p {
   border-radius: 16px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   transition: var(--transition-smooth);
-  
+
   &:hover {
     border-color: var(--border-hover);
     background: var(--bg-card-hover);
@@ -149,7 +166,7 @@ p {
 .quantum-bg-wrapper {
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -168,7 +185,7 @@ p {
 
 /* Text glow */
 .text-glow {
-  text-shadow: 0 0 15px rgba(149, 107, 247, 0.4);
+  text-shadow: 0 0 15px rgba(var(--primary-rgb), 0.4);
 }
 
 /* Fade-in Animation class */
@@ -182,8 +199,58 @@ p {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+
+  &.reveal-left {
+    transform: translateX(-40px);
+  }
+
+  &.reveal-right {
+    transform: translateX(40px);
+  }
+
+  &.reveal-scale {
+    transform: scale(0.94);
+  }
+
+  &.revealed {
+    opacity: 1;
+    transform: translate(0) scale(1);
+  }
+}
+
+/* Staggered Animations for grids/lists */
+.reveal-stagger {
+  & > * {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  &.revealed > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.revealed > *:nth-child(1) { transition-delay: 0.1s; }
+  &.revealed > *:nth-child(2) { transition-delay: 0.2s; }
+  &.revealed > *:nth-child(3) { transition-delay: 0.3s; }
+  &.revealed > *:nth-child(4) { transition-delay: 0.4s; }
+  &.revealed > *:nth-child(5) { transition-delay: 0.5s; }
+  &.revealed > *:nth-child(6) { transition-delay: 0.6s; }
+  &.revealed > *:nth-child(7) { transition-delay: 0.7s; }
+  &.revealed > *:nth-child(8) { transition-delay: 0.8s; }
 }

@@ -6,29 +6,43 @@
       align="center"
     ></app-section-title>
 
-    <div class="diplomas-grid">
+    <div class="diplomas-grid reveal-stagger">
       <div 
         *ngFor="let diploma of diplomas" 
         class="diploma-card-wrapper"
         (click)="openLightbox(diploma.image)"
       >
-        <app-card [interactive]="true" [glowing]="false">
-          <div class="diploma-inner">
+        <div class="diploma-gallery-item">
+          <!-- Passe-partout Frame with sweeping glass reflection -->
+          <div class="diploma-frame">
             <div class="diploma-preview-box">
               <img [src]="diploma.image" [alt]="diploma.title" class="diploma-img">
               <div class="zoom-overlay">
                 <span class="zoom-icon">🔍</span>
-                <span class="zoom-text">Увеличить</span>
+                <span class="zoom-text">Открыть оригинал</span>
               </div>
             </div>
-            
-            <div class="diploma-info">
-              <span class="diploma-year">{{ diploma.year }}</span>
-              <h3 class="diploma-title">{{ diploma.title }}</h3>
-              <p class="diploma-inst">{{ diploma.institution }}</p>
-            </div>
           </div>
-        </app-card>
+          
+          <!-- Editorial Typography details -->
+          <div class="diploma-info">
+            <span class="diploma-year">{{ diploma.year }}</span>
+            <h3 class="diploma-title">{{ diploma.title }}</h3>
+            <div class="diploma-divider"></div>
+            <p class="diploma-inst">{{ diploma.institution }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Courses & Specializations Block -->
+    <div class="additional-education-box reveal">
+      <h3 class="box-title">Дополнительные курсы & Повышение квалификации</h3>
+      <div class="courses-grid">
+        <div *ngFor="let course of additionalCourses" class="course-item">
+          <span class="course-badge">✦</span>
+          <span class="course-text">{{ course }}</span>
+        </div>
       </div>
     </div>
   </div>

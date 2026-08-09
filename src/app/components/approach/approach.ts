@@ -54,7 +54,7 @@ export class ApproachComponent implements OnInit {
     if (typeof window !== 'undefined') {
       const count = window.innerWidth <= 768 ? 1 : 2;
       this.visibleCount.set(count);
-      
+
       // Ensure index is within range after resize
       const maxIdx = this.pillars.length - count;
       if (this.currentIndex() > maxIdx) {

@@ -1,9 +1,9 @@
 .faq-item {
-  border-bottom: 1px solid rgba(149, 107, 247, 0.15);
+  border-bottom: 1px solid rgba(var(--primary-rgb), 0.15);
   transition: var(--transition-smooth);
 
   &:hover {
-    border-color: rgba(149, 107, 247, 0.35);
+    border-color: rgba(var(--primary-rgb), 0.35);
   }
 
   .faq-trigger {
@@ -98,6 +98,17 @@
 
     .faq-content-wrapper {
       grid-template-rows: 1fr;
+    }
+  }
+}
+
+/* Light theme overrides */
+:host-context([data-theme="light"]) {
+  .faq-item {
+    border-color: rgba(var(--primary-rgb), 0.12);
+    
+    &:hover {
+      border-color: rgba(var(--primary-rgb), 0.3);
     }
   }
 }
