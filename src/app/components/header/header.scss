@@ -3,13 +3,17 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 0;
+  padding: 0.75rem 0;
   z-index: 1000;
   transition: var(--transition-smooth);
   border-bottom: 1px solid transparent;
 
+  @media (max-width: 768px) {
+    padding: 0.75rem 0;
+  }
+
   &.scrolled {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     background: var(--bg-header);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -47,9 +51,15 @@ header {
     transition: var(--transition-fast);
 
     .logo-img {
-      width: 150px;
-      height: 150px;
+      width: auto;
+      height: 48px;
+      max-width: 140px;
       object-fit: contain;
+
+      @media (max-width: 768px) {
+        height: 38px;
+        max-width: 110px;
+      }
     }
 
     .logo-letters {
@@ -92,7 +102,7 @@ header {
     gap: 2rem;
 
     a {
-      color: rgba(255, 255, 255, 0.85);
+      color: rgba(250, 253, 253, 0.85);
       text-decoration: none;
       font-size: 0.875rem;
       font-weight: 500;
@@ -145,8 +155,8 @@ header {
 
     .bar {
       width: 100%;
-      height: 2px;
-      background-color: #ffffff;
+      height: 2.5px;
+      background-color: #0c1b1c;
       border-radius: 2px;
       transition: var(--transition-smooth);
     }
