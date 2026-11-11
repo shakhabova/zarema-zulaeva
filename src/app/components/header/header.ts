@@ -21,7 +21,8 @@ export class HeaderComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isScrolled.set(window.scrollY > 50);
+    const scrollThreshold = window.innerWidth <= 768 ? 0 : 50;
+    this.isScrolled.set(window.scrollY > scrollThreshold);
   }
 
   toggleMobileMenu() {

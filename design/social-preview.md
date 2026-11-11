@@ -4,7 +4,7 @@
 - Источник фотографии: `public/images/IMG_3695.jpg`.
 - Изображение создано встроенным инструментом imagegen, затем уменьшено для веба.
 - Адрес изображения в Open Graph и Twitter Card настроен на GitHub Pages по репозиторию и существующему workflow: `https://shakhabova.github.io/zarema-zulaeva/images/social-preview.jpg`. При смене домена обновить абсолютные адреса в `src/index.html`.
-- Фавикон — отдельная векторная монограмма ZZ в цветах сайта; исходник `public/favicon.svg`. PNG и ICO используют тот же рисунок.
+- Фавикон обновлён по референсу пользователя; исходник и параметры описаны в `design/favicon.md`.
 
 ## Промпт imagegen
 
