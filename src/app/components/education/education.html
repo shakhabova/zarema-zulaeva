@@ -40,7 +40,9 @@
       <h3 class="box-title">Дополнительные курсы & Повышение квалификации</h3>
       <div class="courses-grid">
         <div *ngFor="let course of additionalCourses" class="course-item">
-          <span class="course-badge">✦</span>
+          <svg class="course-badge" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="m2 9 10-5 10 5-10 5L2 9Zm4 2v6c4 3 8 3 12 0v-6M22 9v7" />
+          </svg>
           <span class="course-text">{{ course }}</span>
         </div>
       </div>

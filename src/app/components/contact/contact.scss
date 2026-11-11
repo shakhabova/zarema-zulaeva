@@ -77,7 +77,7 @@
     width: fit-content;
 
     .messenger-icon {
-      font-size: 1.1rem;
+      flex-shrink: 0;
       color: var(--primary);
     }
 

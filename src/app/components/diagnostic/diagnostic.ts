@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionTitleComponent } from '../../shared/section-title/section-title';
-import { CardComponent } from '../../shared/card/card';
 import { ButtonComponent } from '../../shared/button/button';
 
 interface DiagnosticCard {
@@ -14,7 +13,7 @@ interface DiagnosticCard {
 @Component({
   selector: 'app-diagnostic',
   standalone: true,
-  imports: [CommonModule, SectionTitleComponent, CardComponent, ButtonComponent],
+  imports: [CommonModule, SectionTitleComponent, ButtonComponent],
   templateUrl: './diagnostic.html',
   styleUrl: './diagnostic.scss'
 })

@@ -1,207 +1,215 @@
-.diagnostic-section {
+﻿.diagnostic-section {
   padding: 100px 0;
-  background-color: var(--bg-darker);
-  position: relative;
-  overflow: hidden;
+  background: var(--bg-darker);
 
   .diagnostic-intro {
-    max-width: 800px;
-    margin: -1.5rem auto 4.5rem auto;
+    max-width: 620px;
+    margin: -1.5rem auto 3rem;
     text-align: center;
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.75;
-      color: var(--text-muted);
-    }
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
   }
 
-  /* Grid configuration */
   .diagnostic-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 4rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
 
-    @media (max-width: 991px) {
-      grid-template-columns: repeat(2, 1fr);
+  .diagnostic-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 240px;
+    padding: 1.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+
+    &:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
     }
 
-    @media (max-width: 768px) {
+    &:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+
+    &.selected {
+      border-color: var(--primary);
+      background: linear-gradient(rgba(var(--primary-rgb), 0.08), rgba(var(--primary-rgb), 0.08)), var(--bg-dark);
+
+      .card-action {
+        color: var(--primary);
+      }
+    }
+  }
+
+  .diagnostic-option {
+    display: contents;
+  }
+
+  .disclosure-arrow {
+    flex-shrink: 0;
+
+    &.expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  .card-topline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--primary);
+  }
+
+  .card-number {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  .card-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+  }
+
+  .question-text {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.55;
+  }
+
+  .card-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .recommendation-panel {
+    grid-column: 1 / -1;
+    order: 1;
+    margin-top: 2rem;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--primary);
+    border-radius: 12px;
+    background: var(--bg-dark);
+  }
+
+  .recommendation-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 3rem;
+    padding: 2.5rem;
+  }
+
+  .recommendation-header {
+    grid-column: 1 / -1;
+  }
+
+  .recommendation-badge {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .recommendation-title {
+    color: var(--text-main);
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+
+  .feedback-text,
+  .direction-text {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .direction-box {
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border-color);
+  }
+
+  .direction-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    font-size: 0.85rem;
+  }
+
+  .recommendation-action {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 991px) {
+    .diagnostic-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 70px 0;
+
+    .diagnostic-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .diagnostic-card {
+      width: 100%;
+      min-height: 0;
+      padding: 1.5rem;
       gap: 1.25rem;
     }
-  }
 
-  .diagnostic-card-wrapper {
-    cursor: pointer;
-    height: 100%;
-    transition: var(--transition-smooth);
-
-    .card-inner {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-      min-height: 110px;
-      gap: 1.5rem;
+    .diagnostic-option {
+      display: block;
     }
 
-    .question-text {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      line-height: 1.5;
-      font-style: italic;
-      color: var(--text-main);
-      transition: var(--transition-fast);
+    .recommendation-panel {
+      margin-top: 0.75rem;
     }
 
-    .select-indicator {
-      align-self: flex-end;
-      width: 18px;
-      height: 18px;
-      border: 1px solid rgba(var(--primary-rgb), 0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-fast);
-
-      .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background-color: transparent;
-        transition: var(--transition-fast);
-      }
+    .diagnostic-card:hover {
+      transform: none;
     }
-
-    /* Hover effect */
-    &:hover {
-      ::ng-deep .card-panel {
-        box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.25);
-        border-color: rgba(var(--primary-rgb), 0.4);
-      }
-
-      .select-indicator {
-        border-color: var(--primary);
-      }
-    }
-
-    /* Selected state */
-    &.selected {
-      .question-text {
-        color: var(--secondary);
-      }
-
-      .select-indicator {
-        border-color: var(--primary);
-        box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
-
-        .dot {
-          background-color: var(--primary);
-        }
-      }
-    }
-  }
-
-  /* Recommendation panel */
-  .recommendation-panel {
-    max-width: 900px;
-    margin: 0 auto;
-    background: rgba(22, 14, 36, 0.85);
-    border: 1px solid rgba(var(--primary-rgb), 0.3);
-    box-shadow: 0 15px 50px rgba(var(--primary-rgb), 0.08);
 
     .recommendation-content {
-      padding: 3rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-
-      @media (max-width: 768px) {
-        padding: 2rem 1.5rem;
-        gap: 1.5rem;
-      }
-    }
-
-    .recommendation-header {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .recommendation-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--primary);
-    }
-
-    .recommendation-title {
-      font-size: 1.6rem;
-      color: var(--text-main);
-      font-weight: 400;
-
-      @media (max-width: 768px) {
-        font-size: 1.35rem;
-      }
-    }
-
-    .feedback-text {
-      font-size: 1.05rem;
-      line-height: 1.65;
-      color: var(--text-muted);
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
     }
 
     .direction-box {
-      border-left: 2px solid var(--primary);
-      padding-left: 1.5rem;
-      margin: 0.5rem 0;
-
-      .direction-label {
-        font-size: 0.8rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--secondary);
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-
-      .direction-text {
-        font-size: 1.1rem;
-        line-height: 1.5;
-        color: var(--text-main);
-        font-family: var(--font-serif);
-      }
-    }
-
-    .recommendation-action {
-      margin-top: 1rem;
-      align-self: flex-start;
-
-      @media (max-width: 576px) {
-        align-self: stretch;
-
-        ::ng-deep app-button {
-          width: 100%;
-
-          button {
-            width: 100%;
-          }
-        }
-      }
+      padding: 1rem 0 0;
+      border-left: 0;
+      border-top: 1px solid var(--border-color);
     }
   }
-}
 
-/* Light theme overrides for recommendation details panel */
-[data-theme="light"] {
-  .recommendation-box {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: rgba(var(--primary-rgb), 0.25);
-    box-shadow: 0 15px 50px rgba(var(--primary-rgb), 0.08);
+  @media (prefers-reduced-motion: reduce) {
+    .diagnostic-card {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
   }
 }

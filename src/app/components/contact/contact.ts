@@ -38,8 +38,9 @@ export class ContactComponent {
   ];
 
   protected readonly formats = [
-    { value: 'online', label: 'Онлайн (Zoom / Skype / Telegram)' },
-    { value: 'offline', label: 'Очно в Москве (кабинет в центре)' }
+    { value: 'online', label: 'Онлайн (Zoom / WhatsApp / Telegram)' },
+    { value: 'offline', label: 'Очно в Москве' },
+    { value: 'offline-grozny', label: 'Очно в Грозном' }
   ];
 
   protected readonly times = [
@@ -62,7 +63,7 @@ export class ContactComponent {
       const text = `Здравствуйте, Зарема! Хочу записаться на сессию.\n\nНаправление: ${serviceLabel}\nФормат встреч: ${formatLabel}\nУдобное время: ${timeLabel}${messageText}`;
       
       const encodedText = encodeURIComponent(text);
-      const whatsappUrl = `https://wa.me/79990000000?text=${encodedText}`;
+      const whatsappUrl = `https://wa.me/79659527383?text=${encodedText}`;
 
       if (typeof window !== 'undefined') {
         window.open(whatsappUrl, '_blank');

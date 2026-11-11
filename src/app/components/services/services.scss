@@ -41,6 +41,7 @@
     .row-container {
       position: relative;
       z-index: 2;
+      padding-top: 1.5rem;
       display: grid;
       grid-template-columns: 1.2fr 1.5fr 1fr 0.8fr;
       gap: 2.5rem;

@@ -5,38 +5,45 @@
 
     <div class="diagnostic-intro reveal">
       <p>
-        Прислушайтесь к себе. Какой из этих внутренних вопросов откликается в теле прямо сейчас? Выберите карточку,
-        чтобы получить первичное полевое объяснение и рекомендацию по направлению работы.
+        Что откликается вам сейчас? Выберите близкое вам состояние,
+        чтобы узнать, с какого направления можно начать работу.
       </p>
     </div>
 
-    <div class="diagnostic-grid reveal-stagger">
-      <div *ngFor="let card of diagnosticCards" class="diagnostic-card-wrapper"
-        [class.selected]="selectedCardId() === card.id" (click)="selectCard(card.id)">
-        <app-card [glowing]="selectedCardId() === card.id" [interactive]="true">
-          <div class="card-inner">
-            <p class="question-text">{{ card.question }}</p>
-            <div class="select-indicator">
-              <span class="dot"></span>
-            </div>
-          </div>
-        </app-card>
-      </div>
-    </div>
-
+    <div class="diagnostic-grid reveal">
+      <div *ngFor="let card of diagnosticCards; let idx = index" class="diagnostic-option">
+      <button class="diagnostic-card" type="button"
+        [class.selected]="selectedCardId() === card.id" [attr.aria-expanded]="selectedCardId() === card.id"
+        [attr.aria-controls]="selectedCardId() === card.id ? 'diagnostic-recommendation' : null" (click)="selectCard(card.id)">
+        <span class="card-topline">
+          <span class="card-number">0{{ idx + 1 }}</span>
+          <span class="card-rule"></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="9" />
+            <path *ngIf="selectedCardId() === card.id" d="m8 12 3 3 5-6" />
+          </svg>
+        </span>
+        <span class="question-text">{{ card.question }}</span>
+        <span class="card-action">
+          <span>{{ selectedCardId() === card.id ? 'Рекомендация ниже' : 'Посмотреть рекомендацию' }}</span>
+          <svg class="disclosure-arrow" [class.expanded]="selectedCardId() === card.id" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </span>
+      </button>
     <!-- Active Guidance Recommendation Block -->
-    <div class="recommendation-panel glass-panel" *ngIf="selectedCardId() !== null">
+    <div id="diagnostic-recommendation" class="recommendation-panel" *ngIf="selectedCardId() === card.id" role="region" aria-labelledby="recommendation-title" aria-live="polite">
       <div class="recommendation-content fade-in">
         <div class="recommendation-header">
           <span class="recommendation-badge">Вектор работы</span>
-          <h4 class="recommendation-title">Полевое видение вашего запроса:</h4>
+          <h3 id="recommendation-title" class="recommendation-title">С чего можно начать</h3>
         </div>
 
-        <p class="feedback-text">{{ getSelectedCard()?.feedback }}</p>
+        <p class="feedback-text">{{ card.feedback }}</p>
 
         <div class="direction-box">
           <span class="direction-label">Рекомендуемое направление:</span>
-          <p class="direction-text">{{ getSelectedCard()?.recommendation }}</p>
+          <p class="direction-text">{{ card.recommendation }}</p>
         </div>
 
         <div class="recommendation-action">
@@ -44,6 +51,8 @@
             Обсудить запрос на сессии
           </app-button>
         </div>
+      </div>
+    </div>
       </div>
     </div>
   </div>
