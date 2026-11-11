@@ -273,4 +273,38 @@ header {
       }
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 0.375rem 0;
+    background: transparent;
+    border-bottom: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    // Switch the background immediately so content never shows through a fade.
+    transition: box-shadow 0.2s ease;
+
+    &.scrolled,
+    &.mobile-open {
+      padding: 0.375rem 0;
+      background: var(--bg-dark);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo .logo-art {
+      width: 108px;
+    }
+
+    .logo .logo-img {
+      height: 64px;
+    }
+
+    .mobile-nav {
+      background: #f4f9f8;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
 }
